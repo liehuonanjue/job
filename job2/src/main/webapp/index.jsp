@@ -27,14 +27,34 @@
     <script type="text/javascript">
         $(function () {
             load(0);
-
         });
+
+        function de(idd) {
+            if(confirm("确定删除吗？")){
+                $.ajax({
+                    url: "/Operation/delete",
+                    type: "post",
+                    data: {"uid": idd},
+                    dataType: "text",
+                    success: function (data) {
+                        alert(data)
+                        if (data == "true") {
+                            alert("删除成功");
+                            window.location.href = "index.jsp"
+                        } else {
+                            alert("删除失败");
+                            window.location.href = "index.jsp"
+                        }
+                    }
+                })
+            }
+
+        }
 
         var pageNume = null
         var pages = 1;
 
         function load(pageNum) {
-
             var order = $("[name=order]").val();
             if (pageNum < 0) {   //当前页数小于0的时候
                 alert("已经不能在小了")
@@ -58,7 +78,9 @@
                         $.each(data.list, function (i, dom) {
                             //一个dom就是一个对象
                             $("#list-content").append("<tr><td>" + dom.title + "</td><td>" + dom.summary + "</td><td>" + dom.author + "</td><td>" + dom.datetime + "</td><td>" +
-                                "<a href='/sale/SaleReply?order=" + dom.id + "'" + " >查看回復</a>&nbsp;&nbsp;<a href='/Operation/delete?uid=" + dom.id + "'  >刪除</a></td></tr>");
+                                "<a href='/sale/SaleReply?order=" + dom.id + "' >查看回復</a>&nbsp;&nbsp;" +
+                                "<a onclick='javascript:de(" + dom.id + ")' > 刪除 </a>" +
+                                "</td >< /tr>");
                         });
 
                         $(' #tab tr:even').css("backgroundColor", "#b2ff00");
@@ -112,7 +134,7 @@
         </table>
         <div class="pagination" id="pagination"></div>
     </div>
-
+<span class="ded"></span>
 </div>
 
 

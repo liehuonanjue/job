@@ -22,50 +22,27 @@ public class DataCOperation {
     PrintWriter printWriter = null;
 
     @RequestMapping("/delete")
-    public String saleList(int uid, HttpServletResponse response) throws Exception {
-        response.setContentType("text/html; charset=UTF-8"); //转码
+    @ResponseBody
+    public void saleList(int uid, PrintWriter pw) throws Exception {
         int num = iDataCOperationMapper.DeletePosts(uid);
-        printWriter = response.getWriter();
+        System.out.println(num);
         if (num > 0) {
-            printWriter.flush();
-            printWriter.println("<script>");
-            printWriter.println("alert('刪除成功！');");
-            printWriter.println("</script>");
-            return "redirect:/Operation/inde";
+            pw.write("true");
         } else {
-            printWriter.flush();
-            printWriter.println("<script>");
-            printWriter.println("alert('刪除失败！');");
-            printWriter.println("</script>");
-            return "redirect:/Operation/inde";
+            pw.write("flase");
         }
     }
 
     @RequestMapping("/ad")
-    public String ad(@Validated ReplyDetail replyDetail, HttpServletResponse response) throws Exception {
-        response.setContentType("text/html; charset=UTF-8"); //转码
+    @ResponseBody
+    public void ad(@Validated ReplyDetail replyDetail, PrintWriter pw) throws Exception {
         int num = iDataCOperationMapper.AddAReply(replyDetail);
-        printWriter = response.getWriter();
-        System.out.println(num);
         if (num > 0) {
-            printWriter.println("<script>");
-            printWriter.println("alert('添加成功！');");
-            printWriter.println("</script>");
-            System.out.println("2q-----------------------------------++++_____________________");
-            return "redirect:/Operation/inde";
+            pw.write("true");
         } else {
-            printWriter.flush();
-            printWriter.println("<script>");
-            printWriter.println("alert('添加失败！');");
-            printWriter.println("</script>");
-            return "/add";
+            pw.write("flase");
         }
     }
 
-    @RequestMapping("/inde")
-    public String indexx() {
-        System.out.println("w2");
-        return "index";
-    }
 
 }
