@@ -9,6 +9,7 @@ public class ReplyDetail implements Serializable {
     private String content;// 回复内容
     private String autohor;//回复人名称
     private Date createdate;//发布时间
+    private String datetime;
 
     public int getId() {
         return id;
@@ -18,11 +19,11 @@ public class ReplyDetail implements Serializable {
         this.id = id;
     }
 
-    public int getinvaid() {
+    public int getInvaid() {
         return invaid;
     }
 
-    public void setinvaid(int invaid) {
+    public void setInvaid(int invaid) {
         this.invaid = invaid;
     }
 
@@ -34,11 +35,11 @@ public class ReplyDetail implements Serializable {
         this.content = content;
     }
 
-    public String getautohor() {
+    public String getAutohor() {
         return autohor;
     }
 
-    public void setautohor(String autohor) {
+    public void setAutohor(String autohor) {
         this.autohor = autohor;
     }
 
@@ -50,26 +51,36 @@ public class ReplyDetail implements Serializable {
         this.createdate = createdate;
     }
 
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
     @Override
     public String toString() {
-        return "Sale{" +
+        return "ReplyDetail{" +
                 "id=" + id +
                 ", invaid=" + invaid +
                 ", content='" + content + '\'' +
                 ", autohor='" + autohor + '\'' +
                 ", createdate=" + createdate +
+                ", datetime='" + datetime + '\'' +
                 '}';
     }
 
     public ReplyDetail() {
     }
 
-    public ReplyDetail(int id, int invaid, String content, String autohor, Date createdate) {
+    public ReplyDetail(int id, int invaid, String content, String autohor, Date createdate, String datetime) {
 
         this.id = id;
         this.invaid = invaid;
         this.content = content;
         this.autohor = autohor;
         this.createdate = createdate;
+        this.datetime = datetime;
     }
 }

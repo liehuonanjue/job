@@ -10,6 +10,15 @@ public class Invitation implements Serializable {
     private String summary; //帖子摘要
     private String author; //作者
     private Date cretedate; //发布时间
+    private String datetime;
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
 
     public int getId() {
         return id;

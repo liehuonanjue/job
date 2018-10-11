@@ -3,7 +3,7 @@
 <mapper namespace="com.dao.ISaleMapper">
     <select id="getSaleList" resultType="Invitation">
 
-        SELECT title,summary,author,cretedate FROM invitation
+        SELECT id, title,summary,author,cretedate FROM invitation
         <where>
             <if test="null!=order and ''!=order">
                 title LIKE concat('%',#{order},'%')
@@ -12,7 +12,7 @@
     </select>
 
     <select id="getSaleReply" resultType="ReplyDetail">
-        SELECT invaid,autohor,content,createdate FROM reply_detail
+        SELECT id,invaid,autohor,content,createdate FROM reply_detail
         <where>invaid = #{order}
         </where>
     </select>

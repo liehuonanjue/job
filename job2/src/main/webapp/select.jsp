@@ -17,38 +17,33 @@
         $(function () {
             load(0);
         });
-
         var pageNume = null
         var pages = 1;
 
         function load(pageNum) {
-            var order = $("[name=order]").val();
             if (pageNum < 0) {   //当前页数小于0的时候
                 alert("已经不能在小了")
                 ++pageNume
-            }
-            else if (pages + 1 == pageNume) { //当前页数大于最大的时候
+            } else if (pages + 1 == pageNume) { //当前页数大于最大的时候
                 alert("已经不能在大了")
                 --pageNume
             }
             else {
                 $.ajax({
-                    url: "/sale/salelist",
+                    url: "/sale/selec",
                     type: "post",
-                    data: {"order": order, "pageNum": pageNum},   //带条件和页数
-                    dataType: "JSON",
+                    data: {"order":${errorStr}, "pageNum": pageNum},   //带条件和页数
+                    dataType: "text",
                     success: function (data) {
                         pageNum = data.pageNum;  //当前页数
                         pages = data.pages - 1;  // 页数总共有两个 可从0开始所以减一
-                        $("#list-content").html('');        //清空数据
+                        //清空数据
+                        $("#list-content").html('');
                         //追加数据
                         $.each(data.list, function (i, dom) {
                             //一个dom就是一个对象
-                            $("#list-content").append("<tr><td>" + dom.title + "</td><td>" + dom.summary + "</td><td>" + dom.author + "</td><td>" + dom.datetime + "</td><td>" +
-                                "<a href='/sale/SaleReply?order=" + dom.id + "'" + " >查看回復</a>&nbsp;&nbsp;<a href='/Operation/delete?uid=" + dom.id + "'  >刪除</a></td></tr>");
+                            $("#list-content").append("<tr><td>" + dom.invaid + "</td><td>" + dom.content + "</td><td>" + dom.datetime + "</td></tr>");
                         });
-
-
                         //渲染分页  总记录数  当前页码  每页数据量
                         $('#pagination').html(
                             "<a onclick=\"javascript:load(pageNume=0 )\">首页</a><a onclick='javascript:load(--pageNume)'>上一页</a>" +
@@ -65,21 +60,21 @@
 </head>
 <body>
 <div align="center">
-
     <div id="salelist" align="center">
-
-        <h4>帖子标题：&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" class="form-control" id="exampleInputName2" name="order">
-            <input type="button" class="btn btn-default" value="查询" onclick="javascript:load(0)"/>
-        </h4>
-
         <table align="center" border="2px">
             <tr>
-                <th>标题</th>
-                <th>内容</th>
-                <th>作者</th>
-                <th>发布时间</th>
-                <th>操作</th>
+                <th>回复信息内容</th>
+            </tr>
+            <tr>
+                <td width="70%">
+                    <a href="/add.jsp">添加回复</a>
+                    <a href="/index.jsp">返回帖子列表</a>
+                </td>
+            </tr>
+            <tr>
+                <td>回复内容</td>
+                <td>回复名称</td>
+                <td>发布时间</td>
             </tr>
             <tbody id="list-content">
 

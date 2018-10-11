@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.IDataCOperationMapper">
+
+    <insert id="AddAReply" parameterType="ReplyDetail">
+            INSERT INTO reply_detail (invaid,autohor,content,createdate)
+   VALUES (#{invaid},#{autohor},#{content},NOW())
+    </insert>
+
+    <delete id="DeletePosts">
+        DELETE FROM invitation WHERE id = #{xxxx}
+    </delete>
+</mapper>
