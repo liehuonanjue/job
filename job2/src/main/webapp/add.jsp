@@ -17,20 +17,8 @@
         function add() {
             var content = $("[name=content]").val();
             var autohor = $("[name=autohor]").val();
-            $.ajax({
-                type: "POST",
-                url: "/Operation/add",
-                data: {
-                    invaid: ${errorStr},
-                    content: content,
-                    autohor: autohor
-                },
-                dataType: "txt",
-                success: function (data) {
-                    alert(data)
-                    console.log(data)
-                }
-            });
+            window.location.href = "/Operation/ad?invaid=${errorStr}" +
+                "&content=" + content + "&autohor=" + autohor;
         }
 
     </script>
@@ -41,5 +29,6 @@
 </textarea>
 <p>回复名称<input type="text" name="autohor"/></p>
 <input type="button" onclick="add()" value="提交"/>
+<input type="button" href="#" onclick="javascript:history.go(-1);" value="返回"/>
 </body>
 </html>

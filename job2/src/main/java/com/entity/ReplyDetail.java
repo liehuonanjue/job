@@ -1,11 +1,16 @@
 package com.entity;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
 public class ReplyDetail implements Serializable {
+
     private int id; // 编号
     private int invaid;// 帖子编号
+    @NotNull(message = "回复内容")
+    @Size(min = 4, max = 6, message = "用户名大于四个字节小于6个")
     private String content;// 回复内容
     private String autohor;//回复人名称
     private Date createdate;//发布时间

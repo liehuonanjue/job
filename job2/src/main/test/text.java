@@ -4,7 +4,7 @@
 import com.dao.ISaleMapper;
 import com.entity.ReplyDetail;
 import com.service.IDataCOperationService;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

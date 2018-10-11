@@ -12,16 +12,29 @@
     <link rel="stylesheet" href="/css/public.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <style type="text/css">
+        table th, tr, td {
+            align-content: center;
+            text-align: center;
+        }
+
+        table {
+            width: 500px;
+        }
+
+    </style>
     <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
         $(function () {
             load(0);
+
         });
 
         var pageNume = null
         var pages = 1;
 
         function load(pageNum) {
+
             var order = $("[name=order]").val();
             if (pageNum < 0) {   //当前页数小于0的时候
                 alert("已经不能在小了")
@@ -48,7 +61,9 @@
                                 "<a href='/sale/SaleReply?order=" + dom.id + "'" + " >查看回復</a>&nbsp;&nbsp;<a href='/Operation/delete?uid=" + dom.id + "'  >刪除</a></td></tr>");
                         });
 
-
+                        $(' #tab tr:even').css("backgroundColor", "#b2ff00");
+                        $('#tab tr:odd').css("backgroundColor", "#00ffd3");
+                        $('#tab tr:first').css("backgroundColor", "#feff00");
                         //渲染分页  总记录数  当前页码  每页数据量
                         $('#pagination').html(
                             "<a onclick=\"javascript:load(pageNume=0 )\">首页</a><a onclick='javascript:load(--pageNume)'>上一页</a>" +
@@ -61,6 +76,7 @@
             }
         }
 
+
     </script>
 </head>
 <body>
@@ -68,12 +84,20 @@
 
     <div id="salelist" align="center">
 
-        <h4>帖子标题：&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" class="form-control" id="exampleInputName2" name="order">
-            <input type="button" class="btn btn-default" value="查询" onclick="javascript:load(0)"/>
-        </h4>
-
         <table align="center" border="2px">
+            <tr aria-colcount="2">
+                <th height="50">帖子标题</th>
+            </tr>
+            <tr>
+                <th>
+                    帖子标题：
+                    <input type="text" class="form-control" name="order">
+                    <input type="button" class="btn btn-default" value="查询" onclick="javascript:load(0)"/></th>
+                </h4>
+            </tr>
+        </table>
+        <table id="tab" align="center" border="2px">
+
             <tr>
                 <th>标题</th>
                 <th>内容</th>
