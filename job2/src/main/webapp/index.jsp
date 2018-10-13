@@ -30,7 +30,7 @@
         });
 
         function de(idd) {
-            if(confirm("确定删除吗？")){
+            if (confirm("确定删除吗？")) {
                 $.ajax({
                     url: "/Operation/delete",
                     type: "post",
@@ -134,7 +134,7 @@
         </table>
         <div class="pagination" id="pagination"></div>
     </div>
-<span class="ded"></span>
+    <span class="ded"></span>
 </div>
 
 
