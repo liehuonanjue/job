@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="job1" />
         <module name="job2" />
+        <module name="Job3" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="job" target="1.7" />
       <module name="job1" target="1.7" />
       <module name="job2" target="1.7" />
+      <module name="Job3" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -10,6 +10,7 @@
     <modules>
         <module>job1</module>
         <module>job2</module>
+        <module>Job3</module>
     </modules>
     <packaging>pom</packaging>
 

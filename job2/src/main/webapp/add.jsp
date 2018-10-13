@@ -22,8 +22,8 @@
                 return
             }
             else {
-                if (autohor == ""){
-                    autohor="匿名用户";
+                if (autohor == "") {
+                    autohor = "匿名用户";
                 }
                 $.ajax({
                     type: "POST",
@@ -57,6 +57,6 @@
 <p>回复名称<input type="text" name="autohor" value=""/></p>
 <input type="button" onclick="add()" value="提交"/>
 <input type="button" href="#" onclick="javascript:history.go(-1);" value="返回"/>
-<form action="/sale/insertSale" method="post" onsubmit="return addsale()">
+<%--<form action="/sale/insertSale" method="post" onsubmit="return addsale()">--%>
 </body>
 </html>
