@@ -37,7 +37,6 @@
                     data: {"uid": idd},
                     dataType: "text",
                     success: function (data) {
-                        alert(data)
                         if (data == "true") {
                             alert("删除成功");
                             window.location.href = "index.jsp"

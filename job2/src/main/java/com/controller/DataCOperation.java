@@ -21,6 +21,8 @@ public class DataCOperation {
     private IDataCOperationMapper iDataCOperationMapper;
     PrintWriter printWriter = null;
 
+
+    //    删除
     @RequestMapping("/delete")
     @ResponseBody
     public void saleList(int uid, PrintWriter pw) throws Exception {
@@ -33,6 +35,7 @@ public class DataCOperation {
         }
     }
 
+    //添加回复
     @RequestMapping("/ad")
     @ResponseBody
     public void ad(@Validated ReplyDetail replyDetail, PrintWriter pw) throws Exception {
